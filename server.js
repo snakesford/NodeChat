@@ -5,16 +5,18 @@ const EventEmitter = require('events');
 class ChatEmitter extends EventEmitter {};
 const chatEmitter = new ChatEmitter();
 
-server = net.createServer((sock) => {
+server = net.createServer();
+
+server.on('connection', (sock) => {
     console.log("connected");
 
     const socketReader = rl.createInterface(sock, sock);
 
     socketReader.on('line', (line) => {
-       console.log("Receive:", line);
-       let message = JSON.parse(line);
-       message.time = Date.now();
-       chatEmitter.emit('message', JSON.stringify(message));
+        console.log("Receive:", line);
+        let message = JSON.parse(line);
+        message.time = Date.now();
+        chatEmitter.emit('message', JSON.stringify(message));
     });
     sock.on('end', () => {
         console.log("disconnected")
@@ -34,9 +36,11 @@ server = net.createServer((sock) => {
     });
     chatEmitter.on('message', handler)
 });
+
 server.on('error', (err) => {
     console.log("Error");
 });
+
 server.listen(1234, () => {
     console.log('port bound');
 });
