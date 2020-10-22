@@ -38,7 +38,7 @@ server.on('connection', (sock) => {
 });
 
 server.on('error', (err) => {
-    console.log("Error");
+    console.log("Error", err);
 });
 
 server.listen(1234, () => {
