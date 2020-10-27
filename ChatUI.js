@@ -51,10 +51,10 @@ module.exports = class ChatUI extends EventEmitter {
                     next = current + 1;
                     break;
                 case "pageup":
-                    next = current - Math.floor(output.height / 2);
+                    next = current - Math.floor(this.output.height / 2);
                     break;
                 case "pagedown":
-                    next = current + Math.floor(output.height / 2);
+                    next = current + Math.floor(this.output.height / 2);
                     break;
             }
             this.output.scrollTo(next, true);
