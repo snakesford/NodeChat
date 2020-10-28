@@ -91,7 +91,6 @@ module.exports = class ChatUI extends EventEmitter {
 
     addLine(line) {
         this.output.setValue(this.output.value + "\n\n" + line);
-        this.input.focus();
         this.screen.render();
     }
 
