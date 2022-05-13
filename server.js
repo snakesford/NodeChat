@@ -5,6 +5,12 @@ const EventEmitter = require('events');
 class ChatEmitter extends EventEmitter {};
 const chatEmitter = new ChatEmitter();
 
+// Catch uncaughtException
+// see https://github.com/nodejs/node/issues/42154
+process.on('uncaughtException', (error, origin) => {
+    console.error("Error:", error.code);
+});
+
 server = net.createServer();
 
 server.on('connection', (sock) => {
