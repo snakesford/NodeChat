@@ -3,7 +3,7 @@ const ChatConnector = require('./ChatConnector.js');
 const connector = new ChatConnector();
 
 connector.on('join', (time, name) => {
-    console.log(`${name} joined the chat at ${time}`);
+    console.log(`Joined ${name}`);
     console.log(`ChatBot: Welcome ${name}!`);
 });
 
