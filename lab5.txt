@@ -1,0 +1,12 @@
+So first I’ll start off in client. I’ve added a bunch of connectors to console log a bunch of things. now that I’m writing this, I realize this is mostly used for debugging reasons. I’ve left it in there because the tutorial videos included them. I like that this text file makes you think through and reflect on what you’ve accomplished and how.
+
+ChatServer:
+I believe I’ve mostly left this one alone. I’ve added an if statement to check to see if a users’ post starts with @ChatBot.toLowerCase(). If it does, then it checks for a few cases I’ve made.
+
+ChatConnector:
+here I’ve added some connections for rollcall, time and when the users mention an unknow command.
+
+ChatBot:
+Add user emits a join event so that the rest of the user in chat can be notified. remove user does the same taking them out of the array.
+
+update users list I just there to console log in the chat bot terminal.
