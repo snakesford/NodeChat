@@ -6,7 +6,7 @@ module.exports = class ChatServer extends EventEmitter {
     constructor(name) {
         super();
         this.name = name;
-        this.sock = new net.Socket(); 
+        this.sock = new net.Socket();
         this.reader = rl.createInterface(this.sock, this.sock);
         this.reader.on('line', (line) => {
             const message = JSON.parse(line);
@@ -16,7 +16,7 @@ module.exports = class ChatServer extends EventEmitter {
                     break;
                 case 'post':
                     this.emit('post', message.time, message.name, message.post);
-                    const lowerCasePost = message.post.toLowerCase()
+                    const lowerCasePost = message.post.toLowerCase();
                     const chatbotIndex = lowerCasePost.indexOf('@chatbot');
                     if (lowerCasePost.includes('@chatbot')) {
                         if (lowerCasePost.includes('time', chatbotIndex)) {
@@ -28,7 +28,6 @@ module.exports = class ChatServer extends EventEmitter {
                         }
 
                     }
-        
                     break;
                 case 'leave':
                     this.emit('leave', message.time, message.name);
@@ -43,7 +42,7 @@ module.exports = class ChatServer extends EventEmitter {
         });
 
         this.sock.on('error', () => {
-           this.emit('end');
+            this.emit('end');
         });
 
         this.sock.write(JSON.stringify({

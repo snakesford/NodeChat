@@ -21,5 +21,5 @@ connector.on('rollcall', (time, name, post) => {
 });
 
 connector.on('mention', (time, name, post) => {
-    console.log(`${name} invoked ChatBot!`);
+    console.log(`${name} invoked ChatBot! Try a valid command.`);
 });
