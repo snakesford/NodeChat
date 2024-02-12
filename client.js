@@ -12,3 +12,14 @@ connector.on('leave', (time, name) => {
     console.log(`ChatBot: ${name} left the chat.`);
 });
 
+connector.on('time', (time, name, post) => {
+    console.log('Time was invoked');
+});
+
+connector.on('rollcall', (time, name, post) => {
+    console.log('Rollcall was invoked');
+});
+
+connector.on('mention', (time, name, post) => {
+    console.log(`${name} invoked ChatBot!`);
+});
