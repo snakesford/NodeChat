@@ -25,13 +25,19 @@ module.exports = class ChatConnector extends EventEmitter {
             connection.on("end", () => {
                 process.exit(0);
             });
-            connection.on("mention", (time, name, post) => {
-                const mentionMessage = `Hey ${name}, you mentioned '@chatbot' in your message: "${post}"`;
-                this.emit('mention', time, name, mentionMessage);
+            connection.on("mention", (name) => {
+                // this.emit("mention", name);
+                // bot.mention(name)
+                const mentionMessage = `Hey ${name}, in your message you mentioned an unknow command. Try a valid command, "time" or "rollcall"`;
+                this.emit('mention', name);
+                bot.mention(name)
+                this.connection.post(mentionMessage)
             });
-            connection.on("time", (time, name, post) => {
+            connection.on("time", (time, name) => {
+                const date = new Date(time);
+                const formattedTime = `${date.getHours()}:${('0' + date.getMinutes()).slice(-2)}:${('0' + date.getSeconds()).slice(-2)}`;
                 this.emit('time', time, name);
-                this.connection.post(`the time is ${bot.formatDate(time)}`)
+                this.connection.post(`the time is ${formattedTime}`)
             });
             connection.on("rollcall", (time, name, post) => {
                 const mentionMessage = 'rollcall1';

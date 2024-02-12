@@ -24,10 +24,10 @@ module.exports = class ChatServer extends EventEmitter {
                         } else if (lowerCasePost.includes('rollcall', chatbotIndex)) {
                             this.emit('rollcall', message.time, message.name, message.post);
                         } else {
-                            this.emit('mention', message.time, message.name, message.post);
+                            this.emit('mention', message.name);
                         }
-
                     }
+
                     break;
                 case 'leave':
                     this.emit('leave', message.time, message.name);
