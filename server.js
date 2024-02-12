@@ -2,7 +2,7 @@ const net = require('net');
 const rl = require('readline');
 const EventEmitter = require('events');
 
-class ChatEmitter extends EventEmitter {};
+class ChatEmitter extends EventEmitter { };
 const chatEmitter = new ChatEmitter();
 
 // Catch uncaughtException
@@ -27,7 +27,7 @@ server.on('connection', (sock) => {
     sock.on('end', () => {
         console.log("disconnected")
     });
-    const handler = function(line) {
+    const handler = function (line) {
         sock.write(line + '\n');
     };
     sock.on('error', (err) => {

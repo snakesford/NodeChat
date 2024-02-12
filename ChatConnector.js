@@ -26,8 +26,6 @@ module.exports = class ChatConnector extends EventEmitter {
                 process.exit(0);
             });
             connection.on("mention", (name) => {
-                // this.emit("mention", name);
-                // bot.mention(name)
                 const mentionMessage = `Hey ${name}, in your message you mentioned an unknow command. Try a valid command, "time" or "rollcall"`;
                 this.emit('mention', name);
                 bot.mention(name)
