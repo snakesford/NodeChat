@@ -28,11 +28,6 @@ class ChatBot extends EventEmitter {
         this.emit("post", goodbyeMessage);
     }
 
-    mention(name) {
-        const mentionMessage = `Hey ${name}, you mentioned '@chatbot' in your message. Try a valid command, "time" or "rollcall"`;
-        this.emit('mention', mentionMessage);
-    }
-
     updateUsersList() {
         console.log('Current users:', this.users);
     }
